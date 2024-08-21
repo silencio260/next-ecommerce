@@ -1,6 +1,9 @@
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { products, collections } from '@wix/stores';
 import {cookies} from 'next/headers'
+import { orders } from "@wix/ecom";
+import { members } from '@wix/members';
+
 
 
 export const wixClientServer = async () => {
@@ -17,9 +20,9 @@ export const wixClientServer = async () => {
     const wixClient = createClient({
 	modules: {
 		products,
-		collections,
-		//   currentCart,
-		//   redirects
+        collections,
+        orders,
+        members,
 	},
 	auth: OAuthStrategy({
 		clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
